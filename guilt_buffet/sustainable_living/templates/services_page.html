@@ -1,0 +1,176 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Services</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('home_bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: rgba(0, 0, 0, 1.0); 
+            font-family: Arial, sans-serif;
+        }
+
+        .taskbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .taskbar a {
+            text-decoration: none;
+            color: #ffffff;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .content {
+            margin-top: 50px; 
+            text-align: center;
+            color: #2a06f7;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .box {
+            background-color: rgba(241, 232, 232, 0.7);
+            border-radius: 10px; 
+            padding: 20px; 
+            margin: 20px; 
+            max-width: 400px; 
+            text-align: left; 
+            cursor: pointer; 
+            transition: transform 0.3s ease-in-out; 
+        }
+
+        .box h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .box p {
+            font-size: 16px;
+        }
+
+        .box img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .box.expanded {
+            transform: scale(1.1); 
+        }
+
+        .box.expanded p {
+            display: block; 
+        }
+
+        .total-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .total-box {
+            background-color: #f7f7f7;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="taskbar">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'services' %}">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="{% url 'analysis' %}">Analysis</a>
+    </div>
+
+    <div class="content">
+        <h1>Our Services</h1>
+        <div class="box-container">
+            <div class="box" id="service1">
+                <img src="{% static 'compost1.jpeg' %}" alt="Service 1">
+                <h2>ID: 1</h2>
+                <p class="description">{{ composts.0.description }}</p>
+            </div>
+        
+            <div class="box" id="service2">
+                <img src="{% static 'compost2.jpeg' %}" alt="Service 2">
+                <h2>ID: 2</h2>
+                <p class="description">{{ composts.1.description }}</p>
+            </div>
+      
+            <div class="box" id="service3">
+                <img src="{% static 'compost3.jpeg' %}" alt="Service 3">
+                <h2>ID: 3</h2>
+                <p class="description">{{ composts.2.description }}</p>
+            </div>
+         
+            <div class="box" id="service4">
+                <img src="{% static 'compost4.jpeg' %}" alt="Service 4">
+                <h2>ID: 4</h2>
+                <p class="description">{{ composts.3.description }}</p>
+            </div>
+          
+            <div class="box" id="service5">
+                <img src="{% static 'compost5.jpeg' %}" alt="Service 5">
+                <h2>ID: 5</h2>
+                <p class="description">{{ composts.4.description }}</p>
+            </div>
+          
+            <div class="box" id="service6">
+                <img src="{% static 'compost6.jpeg' %}" alt="Service 6">
+                <h2>ID: 216</h2>
+                <p class="description">{{ composts.5.description }}</p>
+            </div>
+        </div>
+    </div>
+
+    <form action="{% url 'services' %}" method = "post">
+        {% csrf_token %}
+        <label for="compost_id">Compost_id:</label><br>
+        <input type="text" id="compost_id" name="compost_id"><br>
+        <label for="quantity">Quantity:</label><br>
+        <input type="text" id="quantity" name="quantity">
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          alert('Records submitted!');
+        });
+      </script>
+
+</body>
+</html>

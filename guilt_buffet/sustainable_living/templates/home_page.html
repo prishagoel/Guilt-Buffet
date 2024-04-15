@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Front Page</title>
+    <style>
+       
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'home_bg.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: rgba(0, 0, 0, 1.0); 
+            font-family: Arial, sans-serif;
+        }
+
+        .taskbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .taskbar a {
+            text-decoration: none;
+            color: #ffffff;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .content {
+            margin-top: 50px; 
+            text-align: center;
+            color: #2a06f7;
+            padding: 10px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .content-box {
+            background-color: rgba(241, 232, 232, 0.7);
+            border-radius: 10px; 
+            padding: 20px; 
+        }
+
+        .content-box h1 {
+            text-align: center; 
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="taskbar">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'about' %}">About</a>
+    <a href="{% url 'services' %}">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="{% url 'analysis' %}">Analysis</a>
+</div>
+
+
+    <div class="content" id="home">
+        <div class="content-box">
+            <h1>Welcome to Our Website</h1>
+            <p>Discover what we have to offer.</p>
+        </div>
+    </div>
+    
+    <div class="content" id="about">
+        <div class="content-box">
+            <h1>What We Do</h1>
+            <p>Learn more about our mission and values.</p>
+        </div>
+    </div>
+    
+    <div class="content" id="services">
+        <div class="content-box">
+            <h1>Did You Know?</h1>
+            <p>Explore the services we provide to our clients.</p>
+        </div>
+    </div>
+    
+    <div class="content" id="contact">
+        <div class="content-box">
+            <h1>Contact Us</h1>
+            <p>Get in touch with us for inquiries and support.</p>
+        </div>
+    </div>
+    
+</body>
+</html>
